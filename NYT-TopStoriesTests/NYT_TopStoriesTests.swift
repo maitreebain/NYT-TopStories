@@ -108,6 +108,7 @@ class NYT_TopStoriesTests: XCTestCase {
         //act
         let expectedTitle = "Trump Administration Freezes Global Entry Enrollment in New York Over Immigration Law"
         
+        //assert
         do {
             let topStories = try JSONDecoder().decode(TopStories.self, from: jsonData)
             let suptitle = topStories.results.first?.title ?? ""
@@ -115,7 +116,6 @@ class NYT_TopStoriesTests: XCTestCase {
         } catch {
             XCTFail("decoding error: \(error)")
         }
-        //assert
     }
 
 }
