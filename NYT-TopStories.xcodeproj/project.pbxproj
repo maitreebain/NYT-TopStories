@@ -91,12 +91,12 @@
 		80CBA75D23EC6B4E00B55AF1 /* NYT-TopStories */ = {
 			isa = PBXGroup;
 			children = (
+				80CBA78F23EC850D00B55AF1 /* TopStory.swift */,
 				80CBA79123EC860900B55AF1 /* Network Services */,
 				80CBA78A23EC711C00B55AF1 /* Views */,
 				80CBA78323EC6E2100B55AF1 /* Controllers */,
 				80CBA78223EC6E1100B55AF1 /* Supporting Files */,
 				80CBA76C23EC6B5200B55AF1 /* Info.plist */,
-				80CBA78F23EC850D00B55AF1 /* TopStory.swift */,
 			);
 			path = "NYT-TopStories";
 			sourceTree = "<group>";
