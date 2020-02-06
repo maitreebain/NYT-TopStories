@@ -1,5 +1,5 @@
 //
-//  TopStoriesTabController.swift
+//  SettingsViewController.swift
 //  NYT-TopStories
 //
 //  Created by Maitree Bain on 2/6/20.
@@ -8,12 +8,13 @@
 
 import UIKit
 
-class TopStoriesTabController: UITabBarController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .brown
+
+        view.backgroundColor = .yellow
     }
+    
 
 }
