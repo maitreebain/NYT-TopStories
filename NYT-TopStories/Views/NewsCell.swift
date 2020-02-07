@@ -33,6 +33,7 @@ class NewsCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.text = "Article Title"
+        label.textAlignment = .center
         return label
     }()
     
@@ -52,6 +53,13 @@ class NewsCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
+    }
+    
+    override func layoutSubviews() {
+      super.layoutSubviews()
+      newsImageView.clipsToBounds = true
+      newsImageView.layer.cornerRadius = 4
+       
     }
     
     private func commonInit() {

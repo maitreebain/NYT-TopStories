@@ -58,8 +58,17 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxSize: CGSize = UIScreen.main.bounds.size
         let itemWidth: CGFloat = maxSize.width
-        let itemHeight: CGFloat = maxSize.height * 0.30
+        let itemHeight: CGFloat = maxSize.height * 0.4
         return CGSize(width: itemWidth, height: itemHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let article = newsArticles[indexPath.row]
+        let articleDetailVC = ArticleDetailViewController()
+        //TODO: after assessment we will be using initializers as dependency injection mechanisms
+        
+        articleDetailVC.article = article
+        navigationController?.pushViewController(articleDetailVC, animated: true)
     }
     
 }
@@ -78,6 +87,5 @@ extension NewsFeedViewController: UICollectionViewDataSource {
         cell.configureCell(with: selectedArticle)
         return cell
     }
-    
     
 }
