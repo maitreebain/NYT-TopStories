@@ -12,6 +12,15 @@ class NewsFeedViewController: UIViewController {
     
     private let newsFeedView = NewsFeedView()
     
+    //data for our collection view
+    private var newsArticles = [Article]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.newsFeedView.collectionView.reloadData()
+            }
+        }
+    }
+    
     override func loadView() {
         view = newsFeedView
     }
@@ -29,12 +38,12 @@ class NewsFeedViewController: UIViewController {
     }
     
     private func fetchStories(for section: String = "Technology") {
-        NYTTopStoriesAPIClient.fetchTopStories(for: section) { (result) in
+        NYTTopStoriesAPIClient.fetchTopStories(for: section) { [weak self] (result) in
             switch result {
             case .failure(let appError):
                 print("no data found: \(appError)")
             case .success(let articles):
-                print("found \(articles.count) articles")
+                self?.newsArticles = articles
             }
         }
     }
@@ -57,13 +66,16 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
 
 extension NewsFeedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return newsArticles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath) as? NewsCell else {
+            fatalError("could not downcast to NewsCell")
+        }
+        let selectedArticle = newsArticles[indexPath.row]
         
-        cell.backgroundColor = .white
+        cell.configureCell(with: selectedArticle)
         return cell
     }
     

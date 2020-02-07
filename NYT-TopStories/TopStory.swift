@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ImageKit
 
 struct TopStories: Codable {
     let section: String
@@ -36,8 +37,21 @@ struct Article: Codable {
 
 struct Multimedia: Codable {
     let url: String
-    let format: String
+    let format: String //superJumbo, thumbLarge
     let height: Double
     let width: Double
     let caption: String
+}
+
+extension Article { //article.getArticleImageURL(.superJumbo)
+    func getArticleImageUrl(for imageFormat: ImageFormat) -> String {
+        let result = multimedia.filter { $0.format == imageFormat.rawValue }
+        
+        guard let multimediaImage = result.first else {
+            //result is 0
+            return ""
+        }
+        
+        return multimediaImage.url
+    }
 }
