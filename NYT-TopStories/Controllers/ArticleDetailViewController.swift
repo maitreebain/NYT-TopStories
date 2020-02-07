@@ -8,10 +8,13 @@
 
 import UIKit
 import ImageKit
+import DataPersistence
 
 class ArticleDetailViewController: UIViewController {
     
     let articleDV = ArticleDetailView()
+    
+    public var dataPersistence: DataPersistence<Article>!
     
     override func loadView() {
         view = articleDV

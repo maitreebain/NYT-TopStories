@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import DataPersistence
 
 class NewsFeedViewController: UIViewController {
     
     private let newsFeedView = NewsFeedView()
+    
+    public var dataPersistence: DataPersistence<Article>!
     
     //data for our collection view
     private var newsArticles = [Article]() {
@@ -68,6 +71,7 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
         //TODO: after assessment we will be using initializers as dependency injection mechanisms
         
         articleDetailVC.article = article
+        articleDetailVC.dataPersistence = dataPersistence
         navigationController?.pushViewController(articleDetailVC, animated: true)
     }
     
