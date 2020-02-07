@@ -26,6 +26,7 @@ class TopStoriesTabController: UITabBarController {
         let viewController = SavedArticleViewController()
         viewController.tabBarItem = UITabBarItem(title: "Saved Articles", image: UIImage(systemName: "folder"), tag: 1)
         
+        //step 6: setting up data persistence and its delegate
         viewController.dataPersistence = dataPersistence
         viewController.dataPersistence.delegate = viewController
         

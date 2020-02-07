@@ -60,6 +60,16 @@ class ArticleDetailViewController: UIViewController {
         sender.image = UIImage(systemName: "bookmark.fill")
         print("save article button test")
         
+        guard let article = article else {
+            return
+        }
+        
+        do{
+            try dataPersistence.createItem(article)
+        } catch {
+            print("error saving article: \(error)")
+        }
+        
         sender.isEnabled = false
     }
 }

@@ -12,7 +12,8 @@ import DataPersistence
 class NewsFeedViewController: UIViewController {
     
     private let newsFeedView = NewsFeedView()
-    
+    //step 2: setting up data persistence and its delegate
+    //since we need an instance passed to the ArticleDetailViewController
     public var dataPersistence: DataPersistence<Article>!
     
     //data for our collection view
@@ -71,6 +72,7 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
         //TODO: after assessment we will be using initializers as dependency injection mechanisms
         
         articleDetailVC.article = article
+        //step 3: setting up data persistence and its delegate
         articleDetailVC.dataPersistence = dataPersistence
         navigationController?.pushViewController(articleDetailVC, animated: true)
     }
