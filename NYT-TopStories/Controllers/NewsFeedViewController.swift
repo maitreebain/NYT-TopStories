@@ -24,7 +24,7 @@ class NewsFeedViewController: UIViewController {
         newsFeedView.collectionView.dataSource = self
         
         //register a collection view cell
-        newsFeedView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "articleCell")
+        newsFeedView.collectionView.register(NewsCell.self, forCellWithReuseIdentifier: "articleCell")
         fetchStories()
     }
     
